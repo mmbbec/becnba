@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NBA Automation - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app-container">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-logo">
+                NBA
+            </div>
+
+            <div>
+
+                <h2>NBA Automation</h2>
+
+                <small>
+                    EEE Program
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item active"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="upload.html"
+                class="nav-item"
+            >
+                <span>📤</span>
+                Upload Document
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+                onclick="showSection('tasks')"
+            >
+                <span>📋</span>
+                My Tasks
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+                onclick="showSection('documents')"
+            >
+                <span>📁</span>
+                My Documents
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+                onclick="showSection('criteria')"
+            >
+                <span>📊</span>
+                Criteria
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+                onclick="showSection('notifications')"
+            >
+                <span>🔔</span>
+                Notifications
+            </a>
+
+
+            <div
+                id="adminMenu"
+                class="admin-menu"
+            >
+
+                <div class="nav-section-title">
+                    Administration
+                </div>
+
+                <a href="#" class="nav-item">
+                    <span>👥</span>
+                    Users
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>📝</span>
+                    Assign Tasks
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+                <p id="pageSubtitle">
+                    NBA Program Accreditation
+                </p>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="notification-icon">
+                    🔔
+                    <span>3</span>
+                </div>
+
+
+                <div class="user-profile">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div>
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <small id="userRole">
+                            Role
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboardSection">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <h2>
+                        Welcome, <span id="welcomeName">User</span> 👋
+                    </h2>
+
+                    <p>
+                        Manage your NBA accreditation activities,
+                        documents and assigned tasks.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="upload.html"
+                    class="btn btn-light"
+                >
+                    📤 Upload Document
+                </a>
+
+            </div>
+
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <span>
+                            My Tasks
+                        </span>
+
+                        <strong id="totalTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        📁
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Documents
+                        </span>
+
+                        <strong id="totalDocuments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <strong id="pendingTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Completed
+                        </span>
+
+                        <strong id="completedTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CRITERIA PROGRESS -->
+
+            <div class="section-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            NBA Criteria Progress
+                        </h2>
+
+                        <p>
+                            Overall document and task progress
+                        </p>
+
+                    </div>
+
+                    <span class="badge badge-blue">
+                        C1 - C9
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="criteriaProgress"
+                    class="criteria-grid"
+                >
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT TASKS -->
+
+            <div class="section-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
+                        <p>
+                            Recently assigned work
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="showSection('tasks')"
+                    >
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Task
+                                </th>
+
+                                <th>
+                                    Criterion
+                                </th>
+
+                                <th>
+                                    Deadline
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="taskTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT DOCUMENTS -->
+
+            <div class="section-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Recent Documents
+                        </h2>
+
+                        <p>
+                            Documents uploaded by you
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="upload.html"
+                        class="btn btn-primary"
+                    >
+                        Upload
+                    </a>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Document
+                                </th>
+
+                                <th>
+                                    Criterion
+                                </th>
+
+                                <th>
+                                    Academic Year
+                                </th>
+
+                                <th>
+                                    Uploaded
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="documentTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TASKS SECTION -->
+
+        <section
+            id="tasksSection"
+            class="hidden"
+        >
+
+            <div class="section-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
+                        <p>
+                            All tasks assigned to you
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Task ID</th>
+                                <th>Task</th>
+                                <th>Criterion</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="allTasksBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- DOCUMENTS SECTION -->
+
+        <section
+            id="documentsSection"
+            class="hidden"
+        >
+
+            <div class="section-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            My Documents
+                        </h2>
+
+                        <p>
+                            Documents submitted by you
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="upload.html"
+                        class="btn btn-primary"
+                    >
+                        📤 Upload
+                    </a>
+
+                </div>
+
+
+                <div class="document-list" id="allDocuments">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CRITERIA SECTION -->
+
+        <section
+            id="criteriaSection"
+            class="hidden"
+        >
+
+            <div class="section-card">
+
+                <h2>
+                    NBA Criteria
+                </h2>
+
+                <p>
+                    Program accreditation criteria
+                </p>
+
+
+                <div
+                    id="criteriaList"
+                    class="criteria-list"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- NOTIFICATIONS -->
+
+        <section
+            id="notificationsSection"
+            class="hidden"
+        >
+
+            <div class="section-card">
+
+                <h2>
+                    Notifications
+                </h2>
+
+                <div class="notification-list">
+
+                    <div class="notification">
+                        <span>📤</span>
+                        <div>
+                            <strong>Document upload required</strong>
+                            <p>
+                                Please upload your assigned evidence.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="notification">
+                        <span>⏰</span>
+                        <div>
+                            <strong>Task deadline approaching</strong>
+                            <p>
+                                One of your tasks is due soon.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="notification">
+                        <span>✅</span>
+                        <div>
+                            <strong>Document verified</strong>
+                            <p>
+                                Your submitted document was verified.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,606 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>NBA Automation - Upload Document</title>
-
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBA Automation - Upload Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
 <div class="app-container">
 
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">NBA</div>
+      <div>
+        <h2>NBA Automation</h2>
+        <small>EEE Program</small>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item"><span>🏠</span> Dashboard</a>
+      <a href="upload.html" class="nav-item active"><span>📤</span> Upload Document</a>
+      <a href="dashboard.html" class="nav-item"><span>📋</span> My Tasks</a>
+      <a href="dashboard.html" class="nav-item"><span>📁</span> My Documents</a>
+      <a href="dashboard.html" class="nav-item"><span>📊</span> Criteria</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </div>
+  </aside>
 
-    <!-- SIDEBAR -->
+  <!-- MAIN -->
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Upload Document</h1>
+        <p>Submit NBA evidence and supporting documents</p>
+      </div>
+      <div class="user-area">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div>
+          <strong id="userName">User</strong>
+          <small id="userRole">Role</small>
+        </div>
+      </div>
+    </header>
 
-    <aside class="sidebar">
-
-        <div class="sidebar-header">
-
-            <div class="sidebar-logo">
-                NBA
-            </div>
-
-            <div>
-
-                <h2>NBA Automation</h2>
-
-                <small>
-                    EEE Program
-                </small>
-
-            </div>
-
+    <section class="upload-page">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2>Document Information</h2>
+            <p>Enter the details of the evidence before uploading.</p>
+          </div>
         </div>
 
+        <form id="uploadForm">
+          <!-- CRITERION -->
+          <div class="form-group">
+            <label for="criterion">NBA Criterion *</label>
+            <select id="criterion" required>
+              <option value="">Select Criterion</option>
+              <option value="C1">C1 - Outcome-Based Curriculum</option>
+              <option value="C2">C2 - Outcome-Based Teaching Learning</option>
+              <option value="C3">C3 - Outcome-Based Assessment</option>
+              <option value="C4">C4 - Student Information</option>
+              <option value="C5">C5 - Faculty Information</option>
+              <option value="C6">C6 - Faculty Contributions</option>
+              <option value="C7">C7 - Facilities and Technical Support</option>
+              <option value="C8">C8 - Continuous Improvement</option>
+              <option value="C9">C9 - Student Support System and Governance</option>
+            </select>
+          </div>
 
-        <nav class="sidebar-nav">
+          <!-- REQUIREMENT -->
+          <div class="form-group">
+            <label for="requirement">Requirement / Sub-Criterion</label>
+            <input type="text" id="requirement" placeholder="Example: CO-PO Mapping">
+          </div>
 
-            <a
-                href="dashboard.html"
-                class="nav-item"
-            >
-                <span>🏠</span>
-                Dashboard
-            </a>
-
-
-            <a
-                href="upload.html"
-                class="nav-item active"
-            >
-                <span>📤</span>
-                Upload Document
-            </a>
-
-
-            <a
-                href="dashboard.html"
-                class="nav-item"
-            >
-                <span>📋</span>
-                My Tasks
-            </a>
-
-
-            <a
-                href="dashboard.html"
-                class="nav-item"
-            >
-                <span>📁</span>
-                My Documents
-            </a>
-
-
-            <a
-                href="dashboard.html"
-                class="nav-item"
-            >
-                <span>📊</span>
-                Criteria
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <button
-                class="logout-btn"
-                onclick="logout()"
-            >
-                🚪 Logout
-            </button>
-
-        </div>
-
-    </aside>
-
-
-
-    <!-- MAIN -->
-
-    <main class="main-content">
-
-
-        <header class="topbar">
-
-            <div>
-
-                <h1>
-                    Upload Document
-                </h1>
-
-                <p>
-                    Submit NBA evidence and supporting documents
-                </p>
-
+          <!-- ACADEMIC YEAR & SEMESTER -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="academicYear">Academic Year *</label>
+              <select id="academicYear" required>
+                <option value="">Select Academic Year</option>
+                <option>2025-26</option>
+                <option>2024-25</option>
+                <option>2023-24</option>
+                <option>2022-23</option>
+              </select>
             </div>
-
-
-            <div class="user-area">
-
-                <div
-                    class="user-avatar"
-                    id="userAvatar"
-                >
-                    U
-                </div>
-
-                <div>
-
-                    <strong id="userName">
-                        User
-                    </strong>
-
-                    <small id="userRole">
-                        Role
-                    </small>
-
-                </div>
-
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <select id="semester">
+                <option value="">Select Semester</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+              </select>
             </div>
-
-        </header>
-
-
-
-        <section class="upload-page">
-
-
-            <div class="section-card">
-
-                <div class="section-header">
-
-                    <div>
-
-                        <h2>
-                            Document Information
-                        </h2>
-
-                        <p>
-                            Enter the details of the evidence before uploading.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <form id="uploadForm">
-
-
-                    <!-- CRITERION -->
-
-                    <div class="form-group">
-
-                        <label for="criterion">
-                            NBA Criterion *
-                        </label>
-
-                        <select
-                            id="criterion"
-                            required
-                        >
-
-                            <option value="">
-                                Select Criterion
-                            </option>
-
-                            <option value="C1">
-                                C1 - Outcome-Based Curriculum
-                            </option>
-
-                            <option value="C2">
-                                C2 - Outcome-Based Teaching Learning
-                            </option>
-
-                            <option value="C3">
-                                C3 - Outcome-Based Assessment
-                            </option>
-
-                            <option value="C4">
-                                C4 - Student Information
-                            </option>
-
-                            <option value="C5">
-                                C5 - Faculty Information
-                            </option>
-
-                            <option value="C6">
-                                C6 - Faculty Contributions
-                            </option>
-
-                            <option value="C7">
-                                C7 - Facilities and Technical Support
-                            </option>
-
-                            <option value="C8">
-                                C8 - Continuous Improvement
-                            </option>
-
-                            <option value="C9">
-                                C9 - Student Support System and Governance
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-
-                    <!-- REQUIREMENT -->
-
-                    <div class="form-group">
-
-                        <label for="requirement">
-                            Requirement / Sub-Criterion
-                        </label>
-
-                        <input
-                            type="text"
-                            id="requirement"
-                            placeholder="Example: CO-PO Mapping"
-                        >
-
-                    </div>
-
-
-
-                    <!-- ACADEMIC YEAR -->
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="academicYear">
-                                Academic Year *
-                            </label>
-
-                            <select
-                                id="academicYear"
-                                required
-                            >
-
-                                <option value="">
-                                    Select Academic Year
-                                </option>
-
-                                <option>
-                                    2025-26
-                                </option>
-
-                                <option>
-                                    2024-25
-                                </option>
-
-                                <option>
-                                    2023-24
-                                </option>
-
-                                <option>
-                                    2022-23
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- SEMESTER -->
-
-                        <div class="form-group">
-
-                            <label for="semester">
-                                Semester
-                            </label>
-
-                            <select id="semester">
-
-                                <option value="">
-                                    Select Semester
-                                </option>
-
-                                <option>
-                                    1
-                                </option>
-
-                                <option>
-                                    2
-                                </option>
-
-                                <option>
-                                    3
-                                </option>
-
-                                <option>
-                                    4
-                                </option>
-
-                                <option>
-                                    5
-                                </option>
-
-                                <option>
-                                    6
-                                </option>
-
-                                <option>
-                                    7
-                                </option>
-
-                                <option>
-                                    8
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- COURSE -->
-
-                    <div class="form-group">
-
-                        <label for="course">
-                            Course / Subject
-                        </label>
-
-                        <input
-                            type="text"
-                            id="course"
-                            placeholder="Example: EE301 - Electrical Machines"
-                        >
-
-                    </div>
-
-
-
-                    <!-- DOCUMENT TYPE -->
-
-                    <div class="form-group">
-
-                        <label for="documentType">
-                            Document Type *
-                        </label>
-
-                        <select
-                            id="documentType"
-                            required
-                        >
-
-                            <option value="">
-                                Select Document Type
-                            </option>
-
-                            <option>
-                                Course File
-                            </option>
-
-                            <option>
-                                Lesson Plan
-                            </option>
-
-                            <option>
-                                Question Paper
-                            </option>
-
-                            <option>
-                                Assignment
-                            </option>
-
-                            <option>
-                                CO Attainment
-                            </option>
-
-                            <option>
-                                CO-PO Mapping
-                            </option>
-
-                            <option>
-                                PO Attainment
-                            </option>
-
-                            <option>
-                                Student Data
-                            </option>
-
-                            <option>
-                                Faculty Data
-                            </option>
-
-                            <option>
-                                Research / Publication
-                            </option>
-
-                            <option>
-                                Laboratory Record
-                            </option>
-
-                            <option>
-                                Meeting Minutes
-                            </option>
-
-                            <option>
-                                Feedback
-                            </option>
-
-                            <option>
-                                Action Taken Report
-                            </option>
-
-                            <option>
-                                Other
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-
-                    <!-- DESCRIPTION -->
-
-                    <div class="form-group">
-
-                        <label for="description">
-                            Description
-                        </label>
-
-                        <textarea
-                            id="description"
-                            rows="4"
-                            placeholder="Enter document description..."
-                        ></textarea>
-
-                    </div>
-
-
-
-                    <!-- FILE -->
-
-                    <div class="form-group">
-
-                        <label>
-                            Select File *
-                        </label>
-
-                        <div
-                            class="file-upload-area"
-                            id="fileUploadArea"
-                        >
-
-                            <div class="upload-icon">
-                                📁
-                            </div>
-
-                            <h3>
-                                Choose a file
-                            </h3>
-
-                            <p>
-                                PDF, Word, Excel, PowerPoint or image
-                            </p>
-
-                            <input
-                                type="file"
-                                id="file"
-                                required
-                            >
-
-                            <label
-                                for="file"
-                                class="btn btn-secondary"
-                            >
-                                Choose File
-                            </label>
-
-                            <div
-                                id="selectedFile"
-                                class="selected-file"
-                            ></div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- UPLOAD STATUS -->
-
-                    <div
-                        id="uploadStatus"
-                        class="upload-status"
-                    ></div>
-
-
-
-                    <!-- BUTTONS -->
-
-                    <div class="form-actions">
-
-                        <a
-                            href="dashboard.html"
-                            class="btn btn-secondary"
-                        >
-                            Cancel
-                        </a>
-
-
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            id="uploadButton"
-                        >
-                            📤 Upload Document
-                        </button>
-
-                    </div>
-
-                </form>
-
+          </div>
+
+          <!-- COURSE -->
+          <div class="form-group">
+            <label for="course">Course / Subject</label>
+            <input type="text" id="course" placeholder="Example: EE301 - Electrical Machines">
+          </div>
+
+          <!-- DOCUMENT TYPE -->
+          <div class="form-group">
+            <label for="documentType">Document Type *</label>
+            <select id="documentType" required>
+              <option value="">Select Document Type</option>
+              <option>Course File</option>
+              <option>Lesson Plan</option>
+              <option>Question Paper</option>
+              <option>Assignment</option>
+              <option>CO Attainment</option>
+              <option>CO-PO Mapping</option>
+              <option>PO Attainment</option>
+              <option>Student Data</option>
+              <option>Faculty Data</option>
+              <option>Research / Publication</option>
+              <option>Laboratory Record</option>
+              <option>Meeting Minutes</option>
+              <option>Feedback</option>
+              <option>Action Taken Report</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="4" placeholder="Enter document description..."></textarea>
+          </div>
+
+          <!-- FILE -->
+          <div class="form-group">
+            <label>Select File *</label>
+            <div class="file-upload-area" id="fileUploadArea">
+              <div class="upload-icon">📁</div>
+              <h3>Choose a file</h3>
+              <p>PDF, Word, Excel, PowerPoint or image</p>
+              <input type="file" id="file" required>
+              <label for="file" class="btn btn-secondary">Choose File</label>
+              <div id="selectedFile" class="selected-file"></div>
             </div>
+          </div>
 
+          <!-- UPLOAD STATUS -->
+          <div id="uploadStatus" class="upload-status"></div>
 
+          <!-- BUTTONS -->
+          <div class="form-actions">
+            <a href="dashboard.html" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary" id="uploadButton">📤 Upload Document</button>
+          </div>
+        </form>
+      </div>
 
-            <!-- INFORMATION -->
+      <!-- GUIDELINES -->
+      <div class="section-card upload-info">
+        <h2>Upload Guidelines</h2>
+        <ul>
+          <li>Use clear and meaningful file names.</li>
+          <li>Select the correct NBA criterion.</li>
+          <li>Select the correct academic year.</li>
+          <li>Make sure the document is complete before submission.</li>
+          <li>After backend integration, the file will be stored in the appropriate Google Drive folder.</li>
+        </ul>
+      </div>
+    </section>
 
-            <div class="section-card upload-info">
-
-                <h2>
-                    Upload Guidelines
-                </h2>
-
-                <ul>
-
-                    <li>
-                        Use clear and meaningful file names.
-                    </li>
-
-                    <li>
-                        Select the correct NBA criterion.
-                    </li>
-
-                    <li>
-                        Select the correct academic year.
-                    </li>
-
-                    <li>
-                        Make sure the document is complete before submission.
-                    </li>
-
-                    <li>
-                        After backend integration, the file will be stored in
-                        the appropriate Google Drive folder.
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-        </section>
-
-    </main>
-
+  </main>
 </div>
 
-
 <script src="app.js"></script>
-
 </body>
 </html>
